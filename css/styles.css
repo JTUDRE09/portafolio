@@ -1,0 +1,727 @@
+/* ============================================
+   PORTAFOLIO - Main Stylesheet
+   Framework: None (pure CSS)
+   ============================================ */
+
+/* ---------- 1. RESET & BASE ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6629ff;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ---------- 2. ROOT VARIABLES ---------- */
+:root {
+  --primary: #6629ff;
+  --secondary: #2c3e50;
+  --white: #fff;
+  --dark: #1a252f;
+  --gray: #6c757d;
+  --body-color: #212529;
+  --gutter-x: 1.5rem;
+}
+
+/* ---------- 3. TYPOGRAPHY ---------- */
+
+/* Letter-by-letter hover animation */
+.letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transition-delay: calc(var(--i, 0) * 25ms);
+  margin: 0 0.08em;
+}
+
+.masthead-heading:hover .letter,
+.page-section-heading:hover .letter,
+.navbar-nav .nav-link:hover .letter {
+  transform: scale(1.2);
+}
+.text-center { text-align: center !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-white { color: var(--white) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.lead { font-size: 1.25rem; font-weight: 300; }
+.font-weight-light { font-weight: 300; }
+.font-weight-bold { font-weight: 700; }
+
+/* ---------- 4. CONTAINER & GRID ---------- */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(var(--gutter-x) * 0.5);
+  padding-right: calc(var(--gutter-x) * 0.5);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-0.5 * var(--gutter-x));
+  margin-right: calc(-0.5 * var(--gutter-x));
+}
+
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-left: calc(var(--gutter-x) * 0.5);
+  padding-right: calc(var(--gutter-x) * 0.5);
+}
+
+/* Columns - full width by default (mobile first) */
+.col-md-6,
+.col-lg-4,
+.col-lg-8,
+.col-xl-7 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.ms-auto { margin-left: auto !important; }
+.me-auto { margin-right: auto !important; }
+
+/* ---------- 5. UTILITY CLASSES ---------- */
+/* Display */
+.d-flex { display: flex !important; }
+.d-none { display: none !important; }
+.flex-column { flex-direction: column !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-center { justify-content: center !important; }
+
+/* Sizing */
+.h-100 { height: 100% !important; }
+.w-100 { width: 100% !important; }
+
+/* Spacing */
+.mx-0 { margin-left: 0 !important; margin-right: 0 !important; }
+.mx-1 { margin-left: 0.25rem !important; margin-right: 0.25rem !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.me-2 { margin-right: 0.5rem !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+.mb-lg-0 { margin-bottom: 0 !important; }
+.mb-md-0 { margin-bottom: 0 !important; }
+
+.py-3 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+.px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+.pb-5 { padding-bottom: 3rem !important; }
+
+/* Borders */
+.rounded { border-radius: 0.375rem !important; }
+.border-0 { border: 0 !important; }
+
+/* Backgrounds */
+.bg-primary { background-color: var(--primary) !important; }
+.bg-secondary { background-color: var(--secondary) !important; }
+
+/* Images */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- 6. BUTTONS ---------- */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  border: 0.125rem solid transparent;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.btn-primary {
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  color: var(--white);
+  background-color: #3d10b0;
+  border-color: #3d10b0;
+}
+
+.btn-success {
+  color: var(--white);
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.btn-success:hover {
+  color: var(--white);
+  background-color: #1da851;
+  border-color: #1da851;
+}
+
+.btn-xl {
+  padding: 1rem 1.75rem;
+  font-size: 1.25rem;
+}
+
+.btn-social {
+  border-radius: 100%;
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-outline-light {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-outline-light:hover {
+  color: #212529;
+  background-color: var(--white);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* ---------- 7. NAVBAR ---------- */
+#mainNav {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: var(--secondary);
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  color: var(--white);
+  font-size: 1.25rem;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  white-space: nowrap;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.nav-item { }
+
+.nav-link {
+  display: block;
+  color: var(--white);
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.navbar-toggler {
+  font-size: 80%;
+  padding: 0.8rem;
+  line-height: 1;
+  background-color: var(--primary);
+  color: var(--white);
+  border: 0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+/* Collapse (mobile menu) */
+.navbar-collapse.collapse:not(.show) {
+  display: none;
+}
+
+.navbar-collapse.collapse.show {
+  display: block;
+}
+
+/* ---------- 8. MASTHEAD / HERO ---------- */
+.masthead {
+  padding-top: calc(6rem + 74px);
+  padding-bottom: 6rem;
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.masthead .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.masthead-avatar {
+  width: 15rem;
+  margin-bottom: 3rem;
+}
+
+.masthead-heading {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.masthead-subheading {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+/* ---------- 9. SECTION DIVIDER ---------- */
+.page-section {
+  padding: 6rem 0;
+}
+
+.page-section-heading {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+
+.divider-custom {
+  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: var(--secondary);
+  border-radius: 1rem;
+}
+
+.divider-custom .divider-custom-line:first-child {
+  margin-right: 1rem;
+}
+
+.divider-custom .divider-custom-line:last-child {
+  margin-left: 1rem;
+}
+
+.divider-custom .divider-custom-icon {
+  color: var(--secondary);
+  font-size: 2rem;
+}
+
+.divider-custom.divider-light .divider-custom-line {
+  background-color: var(--white);
+}
+
+.divider-custom.divider-light .divider-custom-icon {
+  color: var(--white);
+}
+
+/* SVG tech logos en tarjetas del portfolio */
+.portfolio .portfolio-item img[src$=".svg"] {
+  padding: 3.5rem 2rem;
+  background-color: #fff;
+}
+
+/* SVG tech logos en modales */
+.portfolio-modal img[src$=".svg"] {
+  max-height: 16rem;
+  width: auto;
+}
+
+/* ---------- 10. PORTFOLIO SECTION ---------- */
+.portfolio .portfolio-item {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  max-width: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio .portfolio-item .portfolio-item-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+  background-color: #6629ff99; /* #6629ff con 60% de opacidad */
+}
+
+.portfolio .portfolio-item:hover .portfolio-item-caption {
+  opacity: 1;
+}
+
+.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+/* ---------- 11. MODALS ---------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1055;
+  visibility: hidden;
+  opacity: 0;
+  overflow-y: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translate(0, -50px);
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
+.modal-xl {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  outline: 0;
+}
+
+.modal-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  border-bottom: 0;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.portfolio-modal .modal-body {
+  padding-bottom: 3rem;
+}
+
+.portfolio-modal .portfolio-modal-title {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+
+/* ---------- 12. ABOUT SECTION ---------- */
+#about .lead {
+  font-size: 1.15rem;
+}
+
+/* ---------- 13. CONTACT SECTION ---------- */
+#contact p.lead {
+  font-size: 1.25rem;
+}
+
+/* ---------- 14. FOOTER ---------- */
+.footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.footer h4 {
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.footer .lead {
+  font-size: 1.15rem;
+  margin-bottom: 0;
+}
+
+/* ---------- 15. COPYRIGHT ---------- */
+.copyright {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.copyright small {
+  font-size: 0.875em;
+}
+
+/* ---------- 16. RESPONSIVE - TABLET & UP (≥768px) ---------- */
+@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .container {
+    max-width: 720px;
+  }
+
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+
+  .modal-xl {
+    max-width: 1140px;
+  }
+
+  .mb-md-0 {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ---------- 16b. RESPONSIVE - DESKTOP & UP (≥992px) ---------- */
+@media (min-width: 992px) {
+  .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .col-lg-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+
+  .container {
+    max-width: 960px;
+  }
+
+  .mb-lg-0 {
+    margin-bottom: 0 !important;
+  }
+
+  /* Navbar desktop */
+  #mainNav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+  }
+
+  #mainNav .navbar-brand {
+    font-size: 1.75em;
+    transition: font-size 0.3s;
+  }
+
+  #mainNav .navbar-nav {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  #mainNav .navbar-nav .nav-link {
+    padding: 1rem 1rem;
+  }
+
+  #mainNav .navbar-nav .nav-link.active {
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 0.375rem;
+  }
+
+  #mainNav.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  #mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.5em;
+  }
+
+  /* Collapse always visible on desktop */
+  .navbar-collapse.collapse {
+    display: block !important;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  /* Masthead desktop */
+  .masthead {
+    padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem;
+  }
+
+  .masthead-heading {
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+
+  .masthead-subheading {
+    font-size: 1.5rem;
+  }
+
+  /* Page heading desktop */
+  .page-section-heading {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+
+  /* Modal title desktop */
+  .portfolio-modal .portfolio-modal-title {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+
+  .px-lg-3 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .mx-lg-1 {
+    margin-left: 0.25rem !important;
+    margin-right: 0.25rem !important;
+  }
+}
+
+/* ---------- 16c. RESPONSIVE - XL (≥1200px) ---------- */
+@media (min-width: 1200px) {
+  .col-xl-7 {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* ---------- 16d. RESPONSIVE - XXL (≥1400px) ---------- */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
